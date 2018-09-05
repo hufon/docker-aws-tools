@@ -11,6 +11,10 @@ COPY dev-requirements.txt /tmp/
 
 RUN pip install --upgrade -r /tmp/dev-requirements.txt
 
+RUN useradd aws
+
+USER aws
+
 WORKDIR /app
 
 CMD aws --version
