@@ -9,12 +9,8 @@ RUN apt-get update \
 
 COPY dev-requirements.txt /tmp/
 
-RUN pip install -r /tmp/dev-requirements.txt --user --upgrade
-
-# Adding AWS CLI Executable to Path
-RUN echo 'export PATH=~/.local/bin:$PATH'>>root/.bashrc
+RUN pip install --upgrade -r /tmp/dev-requirements.txt
 
 WORKDIR /app
 
-ENTRYPOINT ["aws"]
-CMD [ "--version" ]
+CMD aws --version
